@@ -1,4 +1,4 @@
-# Avaliação das Sprints 2 e 3 - Programa de Bolsas Compass UOL / AWS - turma dezembro/2024
+# Avaliação das Sprints 2 e 3 - Programa de Bolsas Compass UOL / AWS - turma janeiro/2025
 
 Avaliação das segunda e terceira sprints do programa de bolsas Compass UOL para formação em Inteligência Artificial para AWS.
 
