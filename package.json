@@ -1,0 +1,15 @@
+{
+  "name": "sprints-2-3-pb-aws-janeiro",
+  "version": "1.0.0",
+  "description": "Avaliação das segunda e terceira sprints do programa de bolsas Compass UOL para formação em Inteligência Artificial para AWS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
