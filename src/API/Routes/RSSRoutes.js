@@ -1,7 +1,8 @@
-const express = require('express');
-const RSSController = require('../Controllers/RSSController');
+import express from 'express';
+import RSSController from '../Controller/RSSController.js';
+
 const router = express.Router();
 
-router.get('/upload', RSSController.uploadFileToS3);
+router.post('/upload', RSSController.uploadFileToS3);
 
-module.exports = router;
+export default router;

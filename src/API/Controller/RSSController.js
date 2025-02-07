@@ -1,23 +1,22 @@
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-const fs = require("fs");
-const path = require("path");
-require("dotenv").config();
+import { fromIni } from '@aws-sdk/credential-provider-ini';
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url); // Obtém o caminho do arquivo atual
+const __dirname = path.dirname(__filename); // Obtém o diretório atual
+const otherDirectory = path.join(__dirname, '..', '..', 'parse'); // Diretório onde está o feed.json
 
 const s3Client = new S3Client({
-    region: process.env.AWS_REGION, // 'us-east-1'
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,  // Obtém a chave de acesso da variável de ambiente
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,  // Obtém a chave secreta da variável de ambiente
-    }
-  });
-
-const __dirname = path.dirname(__filename); //Diretório atual
-const otherDirectory = path.join(__dirname, '..', '..', '/parse'); //Diretório aonde fica o arquivo feed.json
+    region: process.env.AWS_REGION || 'us-east-1', 
+    credentials: fromIni({ profile: 'carlos-vital' }),
+});
 
 class RSSController {
-
     static async uploadFileToS3(req, res) {
         const bucketName = "grupo-02";
         const filePath = path.join(otherDirectory, "feed.json");
@@ -39,10 +38,10 @@ class RSSController {
 
             res.send(`Arquivo ${key} enviado com sucesso para o bucket ${bucketName}.`);
         } catch (error) {
-            res.status(500).send("Erro ao fazer upload do arquivo.");
+            res.status(500).send(`{ error: ${error.message} }`);
         }
     }
-    
 }
 
-module.exports = RSSController;
+
+export default RSSController;
