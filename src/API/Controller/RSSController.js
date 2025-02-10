@@ -54,7 +54,12 @@ class RSSController {
             };
 
             const data = await s3Client.send(new GetObjectCommand(params));
-            const fileContent = data.Body.toString('utf-8');
+            // Converte o stream de dados em uma string
+            const chunks = [];
+            for await (const chunk of data.Body) {
+                chunks.push(chunk);
+            }
+            const fileContent = Buffer.concat(chunks).toString('utf-8');
 
             res.send(fileContent);
         } catch (error) {
