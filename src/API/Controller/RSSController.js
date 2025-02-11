@@ -4,28 +4,46 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
+import { exec } from "child_process";
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url); // Obtém o caminho do arquivo atual
 const __dirname = path.dirname(__filename); // Obtém o diretório atual
-const otherDirectory = path.join(__dirname, '..', '..', 'parse'); // Diretório onde está o feed.json
+const parseScriptPath = path.join(__dirname, "../../parse/parseRSS.js"); // Caminho do script de parse
+const jsonFilePath = path.join(__dirname, "../../parse/feed.json");   // Caminho do JSON gerado
 
 const s3Client = new S3Client({
-    region: process.env.AWS_REGION || 'us-east-1', 
+    region: process.env.AWS_REGION || 'us-east-1',
     credentials: fromIni({ profile: 'carlos-vital' }), 
 });
 
 class RSSController {
 
+    static async createFileJson() {
+        return new Promise((resolve, reject) => {
+            console.log("Executando script de parse...");
+            exec(`node ${parseScriptPath}`, (error, stdout, stderr) => {
+                if (error) {
+                    return reject(new Error(`Execução falhou: ${error.message}`));
+                }
+                resolve();
+            });            
+        });
+    }
+
     static async uploadFileToS3(req, res) {
+
+        await RSSController.createFileJson();
         const bucketName = "teste-02";
-        const filePath = path.join(otherDirectory, "feed.json");
-        console.log(filePath);
         const key = "feed";
 
+        if (!fs.existsSync(jsonFilePath)) {
+            return res.status(500).json({ error: "O arquivo feed.json não foi gerado." });
+        }
+
         try {
-            const fileContent = fs.readFileSync(filePath);
+            const fileContent = fs.readFileSync(jsonFilePath);
 
             const params = {
                 Bucket: bucketName,

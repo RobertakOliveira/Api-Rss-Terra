@@ -1,9 +1,16 @@
 import RSSParser from "rss-parser";
 import fs from 'fs'; 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const jsonFilePath = path.join(__dirname, 'feed.json'); // Garante que o JSON será salvo na pasta correta
+
 
 const feedUrl = "https://www.terra.com.br/rss.xml";
 
-const parse = async url => {
+const parse = async (url) => {
     const feed = await new RSSParser().parseURL(url);
 
     console.log(feed.title);
@@ -26,7 +33,7 @@ const saveToJson = (data, filename) => {
 const createFileJson = async () => {
     console.log("Parsing " + feedUrl);
     const feedData = await parse(feedUrl);
-    saveToJson(feedData, 'feed.json'); // Salva os dados em um arquivo JSON
+    saveToJson(feedData, jsonFilePath); // Salva os dados em um arquivo JSON
 };
 
 createFileJson();
