@@ -2,16 +2,27 @@ document.getElementById('consultarBtn').addEventListener('click', async () => {
     const resultDiv = document.getElementById('resultado');
     resultDiv.innerHTML = '<p>Carregando...</p>';
 
+    const baseURL = 'http://localhost:3000/api';
+
     try {
         // Faz a requisição para o endpoint do backend
-        const response = await fetch('http://localhost:3000/api/download');
+        const uploadResponse = await fetch(baseURL +'/upload', { method: 'POST',});
+        if (!uploadResponse.ok) {
+            throw new Error(`Erro na requisição: ${uploadResponse.statusText}`);
+        };
+
+            const uploadData = await uploadResponse.json();
+            console.log('Resposta do upload:', uploadData.message);
+
+        // Faz a requisição para o endpoint do backend
+        const response = await fetch(baseURL +'/download');
         if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.statusText}`);
-        }
+        };
         
           // Converte a resposta para texto e depois para JSON
-          const text = await response.text();
-          const data = JSON.parse(text);
+            const text = await response.text();
+            const data = JSON.parse(text);
 
         // Cria a lista de itens
         const list = document.createElement('ul');
