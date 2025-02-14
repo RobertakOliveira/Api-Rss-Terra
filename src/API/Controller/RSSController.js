@@ -55,7 +55,7 @@ class RSSController {
             const command = new PutObjectCommand(params);
             await s3Client.send(command);
 
-            res.send(`Arquivo ${key} enviado com sucesso para o bucket ${bucketName}.`);
+            res.json({ message: `Arquivo ${key} enviado com sucesso para o bucket ${bucketName}.` });
         } catch (error) {
             res.status(500).send(`{ error: ${error.message} }`);
         }
