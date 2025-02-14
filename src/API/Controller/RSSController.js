@@ -1,21 +1,15 @@
 import { fromIni } from '@aws-sdk/credential-provider-ini';
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { exec } from "child_process";
+import { parseScriptPath, jsonFilePath } from "../../Utils/paths.js";
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url); // Obtém o caminho do arquivo atual
-const __dirname = path.dirname(__filename); // Obtém o diretório atual
-const parseScriptPath = path.join(__dirname, "../../parse/parseRSS.js"); // Caminho do script de parse
-const jsonFilePath = path.join(__dirname, "../../parse/feed.json");   // Caminho do JSON gerado
-
 const s3Client = new S3Client({
     region: process.env.AWS_REGION || 'us-east-1',
-    credentials: fromIni({ profile: 'carlos-vital' }), 
+    credentials: fromIni({ profile: 'leonardo-nogueira' }), 
 });
 
 class RSSController {
@@ -35,7 +29,7 @@ class RSSController {
     static async uploadFileToS3(req, res) {
 
         await RSSController.createFileJson();
-        const bucketName = "teste-02";
+        const bucketName = "teste-bucket-021";
         const key = "feed";
 
         if (!fs.existsSync(jsonFilePath)) {
@@ -62,7 +56,7 @@ class RSSController {
     }
 
     static async downloadFileFromS3(req, res) {
-        const bucketName = "teste-02";
+        const bucketName = "teste-bucket-021";
         const key = "feed";
 
         try {

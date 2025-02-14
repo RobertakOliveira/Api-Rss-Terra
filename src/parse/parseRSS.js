@@ -1,12 +1,6 @@
 import RSSParser from "rss-parser";
 import fs from 'fs'; 
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const jsonFilePath = path.join(__dirname, 'feed.json'); // Garante que o JSON será salvo na pasta correta
-
+import {jsonFilePath } from "../Utils/paths.js";
 
 const feedUrl = "https://www.terra.com.br/rss.xml";
 
@@ -22,7 +16,6 @@ const parse = async (url) => {
     return feed;
 };
 
-//para rotar "node parseRSS.js" no terminal de caminho src/parse
 
 const saveToJson = (data, filename) => {
     const jsonData = JSON.stringify(data, null, 2); // Converte para JSON com formatação
