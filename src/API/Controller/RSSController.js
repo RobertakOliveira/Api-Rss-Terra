@@ -9,7 +9,7 @@ dotenv.config();
 
 const s3Client = new S3Client({
     region: process.env.AWS_REGION || 'us-east-1',
-    credentials: fromIni({ profile: 'leonardo-nogueira' }), 
+    credentials: fromIni({ profile: 'amandacampos' }), 
 });
 
 class RSSController {
@@ -29,7 +29,7 @@ class RSSController {
     static async uploadFileToS3(req, res) {
 
         await RSSController.createFileJson();
-        const bucketName = "teste-bucket-021";
+        const bucketName = "grupo-02";
         const key = "feed";
 
         if (!fs.existsSync(jsonFilePath)) {
@@ -56,7 +56,7 @@ class RSSController {
     }
 
     static async downloadFileFromS3(req, res) {
-        const bucketName = "teste-bucket-021";
+        const bucketName = "grupo-02";
         const key = "feed";
 
         try {
