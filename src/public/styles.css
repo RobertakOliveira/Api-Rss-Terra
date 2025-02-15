@@ -21,11 +21,11 @@ body {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: #ff6200;
 }
 
 #consultarBtn {
-    background-color: #3498db;
+    background-color: #ff8000;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -36,7 +36,7 @@ h1 {
 }
 
 #consultarBtn:hover {
-    background-color: #2980b9;
+    background-color: #d87b1e;
 }
 
 #resultado {
@@ -70,7 +70,7 @@ h1 {
 }
 
 #resultado ul li a {
-    color: #3498db;
+    color: #e35f26;
     text-decoration: none;
     font-weight: bold;
 }
