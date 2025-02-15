@@ -1,80 +1,93 @@
-# Avaliação das Sprints 2 e 3 - Programa de Bolsas Compass UOL / AWS - turma janeiro/2025
+<div align="justify">
 
-Avaliação das segunda e terceira sprints do programa de bolsas Compass UOL para formação em Inteligência Artificial para AWS.
+# API em Node.js para Extração de Dados de Feeds RSS 
 
-***
+# 📖 Visão Geral 
+Este projeto foi desenvolvido como parte da avaliação das Sprints 2 e 3 do programa de bolsas **Compass UOL**, focado na formação em **Inteligência Artificial para AWS**.
 
-## Execução (Código Fonte)
+O principal objetivo foi criar uma **API em Node.js**, dockerizada e hospedada em um **IP público na AWS**, capaz de armazenar e disponibilizar dados extraídos de um feed **RSS** do site [Terra.com](https://www.terra.com.br/).
 
-Faça uma API em JavaScript/NodeJS implementada em Docker na AWS para extrair  informações relevantes de um site com conteúdo em formato RSS. Esta aplicação deve salvar os dados em arquivo JSON dentro de um bucket S3, e permitir a consulta do conteúdo salvo através de uma página html.
+# ✅ Funcionalidades Implementadas
 
-**Especificações**:
+### 🔧 Para isso, utilizamos as seguintes tecnologias:
 
-1. Escolher um site de conteúdo público com RSS (como notícias, blogs, etc. e **deve ser diferente das demais equipes**);
-2. Desenvolver uma API para extrair parte o conteúdo RSS do site;
-3. Salvar o conteúdo extraído em arquivo JSON dentro de um bucket S3;
-4. Subir esta API utilizando Docker;
-5. Criar uma página html para fazer consultas à API construída em NodeJS (pode ser bem simples, o layout não será avaliado).
+- **VSCode** – Ambiente de desenvolvimento.
+- **HTML & CSS** – Estilização da interface da API.
+- **Node.js & JavaScript** – Backend da API.
+- **Postman** – Testes das requisições HTTP.
+- **Docker** – Contêinerização do projeto.
+- **AWS EC2** – Hospedagem da API.
+- **AWS S3** – Armazenamento dos dados extraídos.
 
-* Exemplo de RSS com NodeJS:
-  * [Create an RSS Reader in Node](https://sabe.io/tutorials/rss-reader-node)
+## 📂 Estrutura do Projeto 
 
-### Docker
+```plaintext
+/Sprints-2-3-PB-AWS-JANEIRO  
+│── /node_modules/                 # Dependências do projeto  
+│── /src/                          # Código-fonte  
+│   ├── /API/                      # Lógica da API  
+│   │   ├── /Controller/             
+│   │   │   ├── RSSController.js   # Controlador das rotas RSS  
+│   │   ├── /Routes/               # Definição de rotas  
+│   │   │   ├── RSSRoutes.js       # Rotas relacionadas ao RSS  
+│   ├── /parse/                      
+│   │   ├── feed.json              # Arquivo JSON com os dados do feed  
+│   │   ├── parseRSS.js            # Script para processar RSS  
+│── /public/                       # Arquivos estáticos  
+│   ├── index.html                 # Página inicial  
+│   ├── scripts.js                 # Scripts JavaScript da interface  
+│   ├── styles.css                 # Estilização da página  
+│── /Utils/                        # Utilitários do projeto  
+│   ├── paths.js                   # Utilitário para manipulação de caminhos  
+│── server.js                      # Servidor principal  
+│── .gitignore                     # Arquivo para ignorar arquivos no Git  
+│── Dockerfile                     # Configuração para container Docker  
+│── package.json                   # Metadados e dependências do projeto  
+│── package-lock.json              # Versões exatas das dependências  
+│── README.md                      # Documentação do projeto                        
+ ```
 
-Execução em Docker, dentro da AWS Cloud.
+# 🔗 Como acessar o projeto? 
 
-* Subir o projeto NodeJS em Docker na cloud AWS.
-* O grupo pode ficar livre quanto à estratégia adotada para executar o Docker na AWS.
-* Exemplos de como executar:
-  * [Deploy Node js Application on AWS EC2 Server](https://youtu.be/VHzeoDK6L0c?feature=shared)
-  * [Docker na AWS: EC2 ou Elastic Beanstalk? O que é melhor?](https://youtu.be/TJSK9MRPZs4?si=FCm_lDQWIVEUAHlj)
+# 🚧 Dificuldades Enfrentadas 
 
-***
+#  📝 Atribuições de tarefas
 
-## O que será avaliado?
+As responsabilidades foram distribuídas da seguinte forma:
 
-* Uso do projeto em NodeJS;
-* Solução em Docker;
-* Projeto em produção na cloud AWS;
-* Seguir as atividades na ordem proposta;
-* Subir códigos no git ao longo do desenvolvimento;
-* Organização geral do código fonte:
-  * Estrutura de pastas;
-  * Estrutura da lógica de negócio;
-  * Divisão de responsabilidades em arquivos/pastas distintos;
-  * Otimização do código fonte (evitar duplicações de código);
-* Objetividade do README.md;
-* Modelo de organização da equipe para o desenvolvimento do projeto;
-* Página criada com acesso online.
+- **Amanda Campos e Roberta Kamilly:** Configuração do bucket S3 e da instância EC2 na AWS.
+- **Carlos Eduardo e Leonardo de Freitas:** Desenvolvimento da API.
+- **Roberta Kamilly:** Dockerização da API e documentação no README.
+- **Amanda Campos e Carlos Eduardo:** Interface Gráfica e Estilização da página.
+- **Amanda Campos:** Deploy do projeto na AWS.
 
-***
+<small>O projeto foi desenvolvido em equipe, com o objetivo de aplicar os conhecimentos adquiridos ao longo do programa. Cada integrante ficou responsável por uma parte específica do projeto, garantindo uma divisão equilibrada das tarefas.</small>  
 
-## Entrega
+<small>Para facilitar a colaboração e resolver dúvidas de forma eficiente, realizamos reuniões diárias, que também ajudaram a acompanhar o progresso de cada membro. Utilizamos as plataformas <b>Microsoft Teams</b> para a comunicação e organização do trabalho.</small>
 
-* **O trabalho deve ser feito em grupos de três ou quatro pessoas**;
-* Criar uma branch no repositório com o formato grupo-número (exemplo: grupo-1);
-* Conferir se o site de interesse já não foi escolhido por outra equipe;
-* Subir o trabalho na branch da equipe com um README.md:
-  * documentar detalhes sobre como a avaliação foi desenvolvida;
-  * relatar dificuldades conhecidas;
-  * descrever como utilizar o sistema;
-  * fornecer a URL para acesso à página;
-* 🔨 Disponibilizar o código fonte desenvolvido (observar estruturas de pastas);
-* Colocar o arquivo com a configuração nginx (se utilizado).
+# 🌐
 
-* O prazo de entrega é até às 14h do dia 17/02/2025 no repositório do github (<https://github.com/Compass-pb-aws-2025-JANEIRO/sprints-2-3-pb-aws-janeiro>).
+## 👨‍💻 Autores  
 
-***
+**Amanda Campos Ximenes**  
+  - GitHub: (https://github.com/AmandaCampoos)  
+  - LinkedIn: (https://www.linkedin.com/in/amanda-campos-ximenes-a02ab8266)  
 
-## Apresentação
+**Carlos Eduardo dos Santos Vital**  
+  - GitHub: (https://github.com/CarlosEduardo-067)  
+  - LinkedIn: (https://www.linkedin.com/in/carlos-eduardo-dos-santos-vital-9335612b1)
 
-* A coordenação do programa de bolsas irá agendar a apresentação das equipes.
-* Cada equipe terá 15 minutos para apresentar seu readme, código e demonstração do funcionamento da aplicação.
-* Sugere-se que a equipe faça um ensaio prévio utilizando o Teams e testando os recursos de compartilhamento.
-* Na apresentação haverá ao menos uma pessoa da equipe do Programa de Bolsas para acompanhamento.
-* A apresentação será gravada para que os instrutores possam avaliar posteriormente.
-* Os recursos AWS deverão ficar ativos até o final da sprint corrente da apresentação.
-* Após assistir a gravação da apresentação haverão instrutores que darão o feedback técnico.
-* Após todas as apresentações a coordenação também fornecerá o feedback comportamental.
+**Leonardo de Freitas Nogueira**  
+  - GitHub: (https://github.com/leonardinfn)  
+  - LinkedIn: (https://www.linkedin.com/in/leonardo-nogueira-a53419230)  
 
-***
+**Roberta Kamilly Magalhães de Oliveira**  
+  - GitHub: (https://github.com/RobertakOliveira)  
+  - LinkedIn: (https://www.linkedin.com/in/roberta-oliveira-b9a0961a4)  
+ 
+
+## 🤝 Agradecimentos 
+Agradecemos ao programa de bolsas Compass UOL pela oportunidade de aprendizado e crescimento.
+Um obrigado especial aos instrutores, pelo suporte e dedicação que nos ajudaram a superar os desafios do projeto.
+E, por fim, nosso reconhecimento aos autores deste projeto, que trabalharam com empenho e colaboração para alcançar este resultado.
+</div>
