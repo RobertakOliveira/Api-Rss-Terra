@@ -2,7 +2,7 @@ document.getElementById('consultarBtn').addEventListener('click', async () => {
     const resultDiv = document.getElementById('resultado');
     resultDiv.innerHTML = '<p>Carregando...</p>';
 
-    const baseURL = 'http://localhost:3000/api';
+    const baseURL = 'http://54.90.160.105:4000/api';
 
     try {
         // Faz a requisição para o endpoint do backend
