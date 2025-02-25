@@ -1,4 +1,4 @@
-import { fromIni } from '@aws-sdk/credential-provider-ini';
+    import { fromIni } from '@aws-sdk/credential-provider-ini';
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import fs from "fs";
 import dotenv from "dotenv";
