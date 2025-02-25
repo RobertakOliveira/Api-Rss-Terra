@@ -112,7 +112,7 @@ As responsabilidades foram distribuídas da seguinte forma:
 - **Amanda Campos e Carlos Eduardo:** Interface Gráfica e Estilização da página;
 - **Amanda Campos:** Deploy do projeto na AWS.
 
-<small>O projeto foi desenvolvido em equipe, com o objetivo de aplicar os conhecimentos adquiridos ao longo do programa. Cada integrante ficou responsável por uma parte específica do projeto, garantindo uma divisão equilibrada das tarefas.</small>  
+<small>O projeto foi desenvolvido em equipe, cada integrante ficou responsável por uma parte específica do projeto, garantindo uma divisão equilibrada das tarefas.</small>  
 
 <small>Para facilitar a colaboração e resolver dúvidas de forma eficiente, realizamos reuniões diárias, que também ajudaram a acompanhar o progresso de cada membro. Utilizamos as plataformas <b>Microsoft Teams</b> para a comunicação e organização do trabalho.</small>
 
