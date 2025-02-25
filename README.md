@@ -136,7 +136,5 @@ As responsabilidades foram distribuídas da seguinte forma:
  
 
 ## 🤝 Agradecimentos 
-Agradecemos ao programa de bolsas Compass UOL pela oportunidade de aprendizado e crescimento.
-Um obrigado especial aos instrutores, pelo suporte e dedicação que nos ajudaram a superar os desafios do projeto.
-E, por fim, nosso reconhecimento aos autores deste projeto, que trabalharam com empenho e colaboração para alcançar este resultado.
+Um obrigado especial aos autores deste projeto, que trabalharam com empenho e colaboração para alcançar este resultado.
 </div>
